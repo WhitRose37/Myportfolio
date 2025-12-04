@@ -786,17 +786,17 @@ export default function Portfolio() {
                     <div className="grid gap-4">
                       <div className="grid gap-2">
                         <label htmlFor="name-cta" className={`text-xs font-medium ${theme === "dark" ? "text-neutral-400" : "text-neutral-500"} uppercase tracking-wider`}>Name</label>
-                        <Input id="name-cta" placeholder="John Doe" className={`${theme === "dark" ? "bg-white/5 border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"} focus:border-emerald-500/50`} />
+                        <Input id="name-cta" placeholder="Somchai" className={`${theme === "dark" ? "bg-white/5 border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"} focus:border-emerald-500/50`} />
                       </div>
                       <div className="grid gap-2">
                         <label htmlFor="email-cta" className={`text-xs font-medium ${theme === "dark" ? "text-neutral-400" : "text-neutral-500"} uppercase tracking-wider`}>Email</label>
-                        <Input id="email-cta" placeholder="john@example.com" className={`${theme === "dark" ? "bg-white/5 border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"} focus:border-emerald-500/50`} />
+                        <Input id="email-cta" placeholder="Somchai007@gmail.com" className={`${theme === "dark" ? "bg-white/5 border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"} focus:border-emerald-500/50`} />
                       </div>
                       <div className="grid gap-2">
                         <label htmlFor="message-cta" className={`text-xs font-medium ${theme === "dark" ? "text-neutral-400" : "text-neutral-500"} uppercase tracking-wider`}>Message</label>
                         <textarea
                           id="message-cta"
-                          placeholder="Tell me about your project..."
+                          placeholder="Tell me something.."
                           className={`flex min-h-[100px] w-full rounded-md border ${theme === "dark" ? "border-white/10 bg-white/5 text-white placeholder:text-neutral-500" : "border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-400"} px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500/50 disabled:cursor-not-allowed disabled:opacity-50 resize-none`}
                         />
                       </div>
