@@ -163,7 +163,8 @@ const projects = [
     tags: ["Lua", "Roblox studio", "javascript", "blender", "C#"],
     link: "#",
     icon: Brain,
-    color: "purple"
+    color: "purple",
+    image: "/iq_room_project.png"
   },
 ];
 
