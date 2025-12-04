@@ -1,4 +1,4 @@
-import Portfolio from "./portfolio_it_neon_code_theme_th";
+import Portfolio from "./portfolio";
 
 export default function Home() {
   return <Portfolio />;

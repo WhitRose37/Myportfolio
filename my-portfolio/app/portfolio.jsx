@@ -146,7 +146,8 @@ const projects = [
     tags: ["Google scripts", "Google sheet", "eletronics", "Arduino", "Raspberry Pi"],
     link: "https://drive.google.com/drive/folders/1So-FIOQ4W18YrYEu4pjZCkcY52GDow5J?usp=sharing",
     icon: Zap,
-    color: "emerald"
+    color: "emerald",
+    image: "/mini_stencil_project.png"
   },
   {
     title: "BIR Project Generator",
@@ -559,40 +560,42 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <SpotlightCard color={project.color} className="h-full flex flex-col overflow-hidden">
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className={`p-3 rounded-xl bg-${project.color}-500/10`}>
-                        <project.icon className={`w-6 h-6 text-${project.color}-400`} />
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full group">
+                  <SpotlightCard color={project.color} className="h-full flex flex-col overflow-hidden">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className={`p-3 rounded-xl bg-${project.color}-500/10`}>
+                          <project.icon className={`w-6 h-6 text-${project.color}-400`} />
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-neutral-600 -rotate-45 group-hover:text-white group-hover:rotate-0 transition-all duration-300" />
                       </div>
-                      <ArrowRight className="w-5 h-5 text-neutral-600 -rotate-45 group-hover:text-white group-hover:rotate-0 transition-all duration-300" />
-                    </div>
 
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-1">
-                      {project.blurb}
-                    </p>
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
+                      <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-1">
+                        {project.blurb}
+                      </p>
 
-                    {project.image && (
-                      <div className="w-full h-40 overflow-hidden rounded-lg border border-white/5 relative group-hover:border-white/10 transition-colors mb-6">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className={`absolute inset-0 bg-${project.color}-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity`} />
+                      {project.image && (
+                        <div className="w-full h-40 overflow-hidden rounded-lg border border-white/5 relative group-hover:border-white/10 transition-colors mb-6">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className={`absolute inset-0 bg-${project.color}-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity`} />
+                        </div>
+                      )}
+
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tags.map(tag => (
+                          <Badge key={tag} variant="secondary" className="bg-white/5 hover:bg-white/10 text-neutral-300 border-transparent">
+                            {tag}
+                          </Badge>
+                        ))}
                       </div>
-                    )}
-
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="bg-white/5 hover:bg-white/10 text-neutral-300 border-transparent">
-                          {tag}
-                        </Badge>
-                      ))}
                     </div>
-                  </div>
-                </SpotlightCard>
+                  </SpotlightCard>
+                </a>
               </motion.div>
             ))}
           </AnimatePresence>
