@@ -373,8 +373,9 @@ export default function Portfolio() {
             </h1>
 
             <p className="text-lg text-neutral-400 max-w-lg leading-relaxed mb-8">
-              ผมคือนักพัฒนาที่หลงใหลในการสร้างสรรค์เว็บแอปพลิเคชันที่ <span className="text-white font-medium">สวยงาม</span> และ <span className="text-white font-medium">ใช้งานได้จริง</span>
-              เปลี่ยนไอเดียของคุณให้เป็นความจริงด้วยเทคโนโลยีที่ทันสมัย
+              เว็ปไซต์ออกเเบบเพื่อนำเสนอ <span className="text-white font-medium">Portfolio</span> และ <span className="text-white font-medium">performance</span>
+              <br />
+              Thank you for visit my website.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="rounded-full h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-medium">
