@@ -133,72 +133,6 @@ const TiltCard = ({ children, className = "" }) => {
   );
 };
 
-// --- Project Card Component with Slideshow ---
-const ProjectCard = ({ project }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    if (!project.images || project.images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [project.images]);
-
-  const currentImage = project.images ? project.images[currentImageIndex] : project.image;
-
-  return (
-    <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full group">
-      <SpotlightCard color={project.color} className="h-full flex flex-col overflow-hidden">
-        <div className="p-6 flex-1 flex flex-col">
-          <div className="flex justify-between items-start mb-4">
-            <div className={`p-3 rounded-xl bg-${project.color}-500/10`}>
-              <project.icon className={`w-6 h-6 text-${project.color}-400`} />
-            </div>
-            <ArrowRight className="w-5 h-5 text-neutral-600 -rotate-45 group-hover:text-white group-hover:rotate-0 transition-all duration-300" />
-          </div>
-
-          <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
-          <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-1">
-            {project.blurb}
-          </p>
-
-          {currentImage && (
-            <div className="w-full h-40 overflow-hidden rounded-lg border border-white/5 relative group-hover:border-white/10 transition-colors mb-6">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImage}
-                  src={currentImage}
-                  alt={project.title}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full object-cover absolute inset-0"
-                />
-              </AnimatePresence>
-              {/* Placeholder for layout stability if needed, or just rely on absolute positioning above */}
-              <div className="w-full h-full" />
-
-              <div className={`absolute inset-0 bg-${project.color}-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity z-10`} />
-            </div>
-          )}
-
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.tags.map(tag => (
-              <Badge key={tag} variant="secondary" className="bg-white/5 hover:bg-white/10 text-neutral-300 border-transparent">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </SpotlightCard>
-    </a>
-  );
-};
-
 const skills = [
   { group: "Frontend", items: ["React", "TypeScript", "Next.js", "TailwindCSS", "Framer Motion"] },
   { group: "Backend", items: ["Node.js", "Express", "Prisma", "PostgreSQL", "Supabase"] },
@@ -226,21 +160,12 @@ const projects = [
   },
   {
     title: "IQ Room project",
-    blurb: "เกมเเนวห้องปริศนา เพื่อฝึกทักษะด้านความคิด เพื่อช่วยให้น้องๆสามารถเข้าถึงความรู้ผ่านเกม ",
+    blurb: "เกมเเนวห้องปริศนา ",
     tags: ["Lua", "Roblox studio", "javascript", "blender", "C#"],
     link: "#",
     icon: Brain,
     color: "purple",
-    images: ["/iq_room_project.png", "/iq_room_project_2.png"]
-  },
-  {
-    title: "Campus scanner projectKKTECH",
-    blurb: "ระบบตรวจสอบการเข้าชั้นเรียน โดยบันทึกข้อมูลผ่านการตรวจจับใบหน้า เเจ้งเตือนผ่าน API Line ",
-    tags: ["Line API", "OpenCV", "Node.js", "Arduino", "Raspberry Pi"],
-    link: "#",
-    icon: Zap,
-    color: "red",
-    images: ["/campus_project_1.jpg", "/campus_project_2.jpg"]
+    image: "/iq_room_project.png"
   },
 ];
 
@@ -635,7 +560,42 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <ProjectCard project={project} />
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full group">
+                  <SpotlightCard color={project.color} className="h-full flex flex-col overflow-hidden">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className={`p-3 rounded-xl bg-${project.color}-500/10`}>
+                          <project.icon className={`w-6 h-6 text-${project.color}-400`} />
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-neutral-600 -rotate-45 group-hover:text-white group-hover:rotate-0 transition-all duration-300" />
+                      </div>
+
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">{project.title}</h3>
+                      <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-1">
+                        {project.blurb}
+                      </p>
+
+                      {project.image && (
+                        <div className="w-full h-40 overflow-hidden rounded-lg border border-white/5 relative group-hover:border-white/10 transition-colors mb-6">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className={`absolute inset-0 bg-${project.color}-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity`} />
+                        </div>
+                      )}
+
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tags.map(tag => (
+                          <Badge key={tag} variant="secondary" className="bg-white/5 hover:bg-white/10 text-neutral-300 border-transparent">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </SpotlightCard>
+                </a>
               </motion.div>
             ))}
           </AnimatePresence>
