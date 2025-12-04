@@ -133,7 +133,6 @@ const TiltCard = ({ children, className = "" }) => {
   );
 };
 
-// --- Fake data ---
 const skills = [
   { group: "Frontend", items: ["React", "TypeScript", "Next.js", "TailwindCSS", "Framer Motion"] },
   { group: "Backend", items: ["Node.js", "Express", "Prisma", "PostgreSQL", "Supabase"] },
@@ -142,25 +141,26 @@ const skills = [
 
 const projects = [
   {
-    title: "Factory Part Finder",
-    blurb: "ระบบค้นหาอะไหล่อัจฉริยะ ลดเวลา Downtime โรงงานกว่า 60% ด้วย Real-time Search",
-    tags: ["React", "FastAPI", "Postgres"],
-    link: "#",
+    title: "Mini stencil Project",
+    blurb: "ระบบวัดขนานStencil อัตโนมัติ พร้อมส่งข้อมูลไปยัง Google sheet ผ่านการเเสดงข้อมูลบน google scripts",
+    tags: ["Google scripts", "Google sheet", "eletronics", "Arduino", "Raspberry Pi"],
+    link: "https://drive.google.com/drive/folders/1So-FIOQ4W18YrYEu4pjZCkcY52GDow5J?usp=sharing",
     icon: Zap,
     color: "emerald"
   },
   {
-    title: "Smart Campus Portal",
-    blurb: "One-stop service สำหรับนักศึกษา รวมระบบแจ้งซ่อมและจองห้องประชุมในที่เดียว",
-    tags: ["Next.js", "tRPC", "Auth"],
-    link: "#",
+    title: "BIR Project Generator",
+    blurb: "ระบบค้นหาด้วย Part Number พร้อมเชื่อมต่อ OpenAI API เพื่อค้นหาข้อมูลอัตโนมัติ ",
+    tags: ["Next.js", "OpenAI", "Google API", "Supabase", "Auth", "Prisma", "Postgres"],
+    link: "https://bir-final-deploy-qbhj.vercel.app/",
     icon: Globe,
-    color: "cyan"
+    color: "cyan",
+    image: "/bir_project_v2.png"
   },
   {
-    title: "AI Note Summarizer",
-    blurb: "ผู้ช่วยสรุปบทเรียนอัตโนมัติ แปลงชีทเรียนเป็น Flashcards พร้อมสอบในคลิกเดียว",
-    tags: ["Python", "OpenAI", "Vector DB"],
+    title: "IQ Room project",
+    blurb: "เกมเเนวห้องปริศนา ",
+    tags: ["Lua", "Roblox studio", "javascript", "blender", "C#"],
     link: "#",
     icon: Brain,
     color: "purple"
@@ -363,13 +363,13 @@ export default function Portfolio() {
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-              Building <br />
+              Crafting <br />
               <span className="relative inline-block">
                 <span className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 blur-2xl opacity-20"></span>
-                <GradientText>Digital Experiences</GradientText>
+                <GradientText>The Future</GradientText>
               </span>
               <br />
-              That Matter.
+              With Code.
             </h1>
 
             <p className="text-lg text-neutral-400 max-w-lg leading-relaxed mb-8">
@@ -557,7 +557,7 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <SpotlightCard color={project.color} className="h-full flex flex-col">
+                <SpotlightCard color={project.color} className="h-full flex flex-col overflow-hidden">
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex justify-between items-start mb-4">
                       <div className={`p-3 rounded-xl bg-${project.color}-500/10`}>
@@ -570,6 +570,17 @@ export default function Portfolio() {
                     <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-1">
                       {project.blurb}
                     </p>
+
+                    {project.image && (
+                      <div className="w-full h-40 overflow-hidden rounded-lg border border-white/5 relative group-hover:border-white/10 transition-colors mb-6">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className={`absolute inset-0 bg-${project.color}-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity`} />
+                      </div>
+                    )}
 
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.tags.map(tag => (
