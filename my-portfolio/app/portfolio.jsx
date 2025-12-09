@@ -455,7 +455,7 @@ export default function Portfolio() {
               Thank you for visit my website.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-medium">
+              <Button size="lg" className="rounded-full h-12 px-8 bg-white text-black hover:bg-neutral-200 text-base font-medium" onClick={() => window.open('/portfolio.pdf', '_blank')}>
                 ดูผลงานของผม <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Dialog>
